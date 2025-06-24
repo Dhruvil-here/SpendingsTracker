@@ -51,6 +51,37 @@ A simple yet functional desktop application to manage and track your daily/month
 
 **Database Setup:**
 ```sql
+CREATE DATABASE spendingdb;
+
+-- category_info table
+CREATE TABLE category_info (
+    category VARCHAR(255) PRIMARY KEY
+);
+
+-- spendings table
+CREATE TABLE spendings (
+    sid INT AUTO_INCREMENT PRIMARY KEY,
+    category VARCHAR(255),
+    sdate DATE,
+    amount INT
+);
+Update your database credentials inside your Java code:
+
+java
+Copy
+Edit
+Connection c = DriverManager.getConnection(
+  "jdbc:mysql://localhost:3306/spendingdb?useSSL=false", 
+  "root", 
+  "your_password"
+);
+
+src/
+├── gui/
+│   ├── SpendingTraker.java     # Home page
+│   ├── Category.java           # Add/delete categories
+│   └── ViewSpendings.java      # View data by date/category
+
 
 👤 Author
 Dhruvil Gautam
